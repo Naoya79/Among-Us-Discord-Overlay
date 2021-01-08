@@ -22,9 +22,10 @@ body {
   animation-duration: 5000ms;
   animation-fill-mode:forwards;
   filter: brightness(100%) ;
-  filter: /*drop-shadow(right bottom blur color)*/
-    drop-shadow(-1px -1px 2px #43b581) drop-shadow(1px 1px 2px #43b581)
-    drop-shadow(-1px 1px 2px #43b581) drop-shadow(1px1px 2px #43b581);
+  filter:
+    drop-shadow(-1px -1px 2px #43b581) drop-shadow(1px -1px 2px #43b581)
+    drop-shadow(-1px 1px 2px #43b581) drop-shadow(1px 1px 2px #43b581);
+  /*filter: drop-shadow(right bottom blur color);*/
 }
 @keyframes speak-now {
   0% { bottom:0px; }

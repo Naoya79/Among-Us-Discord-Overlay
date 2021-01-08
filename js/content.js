@@ -2,10 +2,11 @@ var url = chrome.extension.getURL('images/');
 
 /*----CSS読み込み----*/
 function appendCSS(url) {
-  var link = document.createElement('link');
+  /*var link = document.createElement('link');
   link.rel = 'stylesheet';
   link.href = url;
-  document.head.appendChild(link);
+  document.body.appendChild(link);*/
+  $('body').append(`<link rel="stylesheet" href="${url}">`);
 }
 appendCSS(chrome.extension.getURL('css/style.css'));
 
@@ -112,6 +113,7 @@ mutationObserver.observe(target, option);
 function userJoined(node) {
   $(node).draggable({
     scroll: false,
+    distance: 20,
     start: function() {
       $(node).spectrum('hide');
     },
