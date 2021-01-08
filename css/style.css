@@ -1,92 +1,91 @@
 body {
-    background-color: #2f3136;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
+  background-color: #2f3136;
+  margin: 0;
+  padding: 0;
+  /*overflow: hidden;*/
 }
 
+/*-- Discord Overlay --*/
 .avatar {
-    height:60px !important;
-    width:60px !important;
-    border-radius:0 !important;
-    filter: brightness(70%);
-    object-fit: contain;
-    outline: none;
-    box-sizing: content-box;
+  height:60px !important;
+  width:60px !important;
+  border-radius:0 !important;
+  filter: brightness(70%);
+  object-fit: contain;
+  outline: none;
+  box-sizing: content-box;
 }
-
 .speaking {
-    border-color:rgba(0,0,0,0) !important;
-    position:relative;
-    animation-name: speak-now;
-    animation-duration: 5000ms;
-    animation-fill-mode:forwards;
-    filter: brightness(100%) ;
-    filter: /*drop-shadow(right bottom blur color)*/
-        drop-shadow(-1px -1px 2px #43b581) drop-shadow(1px -1px 2px #43b581)
-        drop-shadow(-1px 1px 2px #43b581) drop-shadow(1px 1px 2px #43b581);
+  border-color:rgba(0,0,0,0) !important;
+  position:relative;
+  animation-name: speak-now;
+  animation-duration: 5000ms;
+  animation-fill-mode:forwards;
+  filter: brightness(100%) ;
+  filter: /*drop-shadow(right bottom blur color)*/
+    drop-shadow(-1px -1px 2px #43b581) drop-shadow(1px 1px 2px #43b581)
+    drop-shadow(-1px 1px 2px #43b581) drop-shadow(1px1px 2px #43b581);
 }
-
 @keyframes speak-now {
-    0% { bottom:0px; }
-    5% { bottom:6px; }
-    10% { bottom:0px; }
-    15% { bottom:6px; }
-    20% { bottom:0px; }
-    25% { bottom:6px; }
-    30% { bottom:0px; }
-    35% { bottom:6px; }
-    40% { bottom:0px; }
-    45% { bottom:6px; }
-    50% { bottom:0px; }
-    55% { bottom:6px; }
-    60% { bottom:0px; }
-    65% { bottom:6px; }
-    70% { bottom:0px; }
-    75% { bottom:6px; }
-    80% { bottom:0px; }
-    85% { bottom:6px; }
-    90% { bottom:0px; }
-    95% { bottom:6px; }
-    100% { bottom:0px; }
+  0% { bottom:0px; }
+  5% { bottom:6px; }
+  10% { bottom:0px; }
+  15% { bottom:6px; }
+  20% { bottom:0px; }
+  25% { bottom:6px; }
+  30% { bottom:0px; }
+  35% { bottom:6px; }
+  40% { bottom:0px; }
+  45% { bottom:6px; }
+  50% { bottom:0px; }
+  55% { bottom:6px; }
+  60% { bottom:0px; }
+  65% { bottom:6px; }
+  70% { bottom:0px; }
+  75% { bottom:6px; }
+  80% { bottom:0px; }
+  85% { bottom:6px; }
+  90% { bottom:0px; }
+  95% { bottom:6px; }
+  100% { bottom:0px; }
 }
 .voice-states{
-    height: 70px;
+  height: 70px;
 }
 li.voice-state{
-    position: static;
-    display: inline-block;
-    width: 60px;
-    height: 60px;
-    outline: none;
+  position: static;
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  outline: none;
 }
 .user{
-    display: contents;
+  display: contents;
 }
 span.name{
-    display: block;
-    position: relative;
-    bottom: 21px;
-    left: 3px;
-    cursor: default;
-    font-size: 10px !important;
-    width: 60px;
-    line-height: 18px !important;
-    white-space: nowrap;
-    text-overflow: clip;
-    text-align: center;
-    background-color: rgba(0, 0, 0, .7) !important;
-    padding: 0 !important;
-    overflow: hidden;
+  display: block;
+  position: relative;
+  bottom: 21px;
+  left: 3px;
+  cursor: default;
+  font-size: 10px !important;
+  width: 60px;
+  line-height: 18px !important;
+  white-space: nowrap;
+  text-overflow: clip;
+  text-align: center;
+  background-color: rgba(0, 0, 0, .7) !important;
+  padding: 0 !important;
+  overflow: hidden;
 }
 
-/*button*/
+/*-- button --*/
 .edit {
   float: left;
   margin: 1px;
+  width: 80px;
 }
 .button {
-  width: 57px;
   display: block;
   margin: 2px;
   padding: 1px 6px;
@@ -107,25 +106,36 @@ span.name{
 }
 
 .emergency-button {
-    width: 20px;
-    bottom: 59px;
-    left: 1px;
-    position: relative;
-    display: block;
-    opacity: 0.8;
-    filter: brightness(0.5);
+  width: 20px;
+  bottom: 59px;
+  left: 1px;
+  position: relative;
+  display: block;
+  opacity: 0.8;
+  filter: brightness(0.5);
 }
 
-/*map*/
+.map-list {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+}
+#TheSkeld {
+  background: #a0a0a0;
+  color: white;
+}
+
+/*-- map --*/
 #map {
   width: 100%;
 }
 
-/*crewmate image*/
+/*-- crewmate image --*/
 #crewmate-list {
-   display: flex;
-   position: fixed;
-   bottom: 0px;
+  /*display: flex;*/
+  display: none;
+  position: fixed;
+  bottom: 0px;
 }
 .crewmates {
   height: 40px;
@@ -133,15 +143,15 @@ span.name{
   object-fit: contain;
 }
 
-/*color-panel*/
+/*-- color-panel --*/
 .sp-palette-container {
   padding: 0px;
   padding-bottom: 300px;
   margin-bottom: -300px;
 }
 .sp-thumb-el {
-   border: solid 1px #a0a0a0 !important;
+  border: solid 1px #a0a0a0 !important;
 }
 .sp-thumb-inner {
-    background-image: none !important;
+  background-image: none !important;
 }

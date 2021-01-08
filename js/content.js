@@ -1,21 +1,27 @@
-var url = chrome.extension.getURL("images/");
+var url = chrome.extension.getURL('images/');
 
 /*----CSS読み込み----*/
 function appendCSS(url) {
   var link = document.createElement('link');
-  link.rel = "stylesheet";
+  link.rel = 'stylesheet';
   link.href = url;
   document.head.appendChild(link);
 }
-//appendCSS(chrome.extension.getURL("css/lib/spectrum.min.css"));
-appendCSS(chrome.extension.getURL("css/style.css"));
+appendCSS(chrome.extension.getURL('css/style.css'));
 
 /*----ツール要素追加----*/
 $('body').prepend(
-  '<div class="edit">\
-    <a class="button" id="edit-button">Lock</a>\
-    <a class="button" id="revert-button">Reset</a>\
-  </div>'
+  `<div class="edit">
+    <a class="button" id="edit-button">Lock</a>
+    <a class="button" id="revert-button">Reset</a>
+  </div>`
+);
+$('body').append(
+  `<div class="map-list">
+    <a class="button map-button" id="TheSkeld">TheSkeld</a>
+    <a class="button map-button" id="MiraHQ">MiraHQ</a>
+    <a class="button map-button" id="Polus">Polus</a>
+  </div>`
 );
 $('body').append(
   `<img id="map" src="${url}TheSkeld.png" ondragstart="return false;">
@@ -38,12 +44,12 @@ $('body').append(
 /*---- カラー編集切り替え ----*/
 $('#edit-button').on('click', function() {
   const button = $(this).text();
-  if (button == "Lock") {
-    $('.voice-state').spectrum("disable");
-    $(this).text("Unlock");
+  if (button == 'Lock') {
+    $('.voice-state').spectrum('disable');
+    $(this).text('Unlock');
   } else {
-    $('.voice-state').spectrum("enable");
-    $(this).text("Lock");
+    $('.voice-state').spectrum('enable');
+    $(this).text('Lock');
   }
 });
 
@@ -59,6 +65,23 @@ $('#revert-button').on('click', function() {
       'position': 'relative'
     });
   });
+});
+
+/*---- マップ切り替え ----*/
+$('.map-button').on('click', function() {
+  const buttonId = $(this).attr('id');
+  const src = `${url}${buttonId}.png`;
+  $('.map-button').each(function(index, element){
+    $(element).css({
+      'background': 'none',
+      'color': '#bbbbbb'
+    });
+  });
+  $(this).css({
+    'background': '#a0a0a0',
+    'color': 'white'
+  });
+  $('#map').attr('src', src);
 });
 
 /*----Discordユーザ取得----*/
@@ -90,7 +113,7 @@ function userJoined(node) {
   $(node).draggable({
     scroll: false,
     start: function() {
-      $(node).spectrum("hide");
+      $(node).spectrum('hide');
     },
     stop: function() {
       const pos = $(node).offset();
@@ -101,8 +124,8 @@ function userJoined(node) {
       });
     }
   });
-  $(node).children(".avatar").addClass("crewmates");
-  $(node).children(".avatar").attr('alt', '#ffffff');
+  $(node).children('.avatar').addClass('crewmates');
+  $(node).children('.avatar').attr('alt', '#ffffff');
   setEmergencyButton(node);
   //setCrewmate(node);
   setColorPicker(node);
@@ -111,7 +134,7 @@ function userJoined(node) {
 
 /*----ユーザ退室時の設定----*/
 function userLeaved(node) {
-  const color = $(node).children(".avatar").attr('alt');
+  const color = $(node).children('.avatar').attr('alt');
   const src = `${url}playerIcons/${color.substr(1)}.png`;
   if (colors.some(c => c === color)) {
     $('#crewmate-list').append(`<img class="crewmates" src="${src}" alt="${color}">`);
@@ -120,7 +143,7 @@ function userLeaved(node) {
 
 /*---- EmergencyButton設定 ----*/
 function setEmergencyButton(node) {
-  var button = $(`<img class="emergency-button" src="${url}EmergencyButton_close.png">`).appendTo($(node).children(".user"));
+  var button = $(`<img class="emergency-button" src="${url}EmergencyButton_close.png">`).appendTo($(node).children('.user'));
   button.on('click', function() {
     var src = $(this).attr('src');
     if ($(this).css('filter') == 'brightness(0.5)') {
@@ -136,8 +159,8 @@ function setEmergencyButton(node) {
 
 /*----参加ユーザにクルーメイトを設定----*/
 function setCrewmate(node) {
-  const avatar = $(node).children(".avatar");
-  const subElement = $("#crewmate-list .crewmates:first");
+  const avatar = $(node).children('.avatar');
+  const subElement = $('#crewmate-list .crewmates:first');
   const subColor = subElement.attr('alt');
   const subSrc = `${url}playerIcons/${subColor.substr(1)}.png`;
 
@@ -173,12 +196,12 @@ function setColorPicker(node) {
     },
 
     move: function(color) {
-      const oldElement = $(node).children(".avatar");
+      const oldElement = $(node).children('.avatar');
       const oldColor = oldElement.attr('alt');
       const oldSrc = `${url}playerIcons/${oldColor.substr(1)}.png`;
       const newColor = color.toHexString();
       const newSrc = `${url}playerIcons/${color.toHex()}.png`;
-      const newElement = $(".crewmates[alt='" + newColor + "']");
+      const newElement = $(`.crewmates[alt='${newColor}']`);
 
       if (colors.some(c => c === newColor) && oldColor != newColor) {
         // 選択したカラーをスワップ
@@ -189,7 +212,7 @@ function setColorPicker(node) {
           });
         } else { // 元がユーザ画像
           if (newElement.hasClass('avatar')) { // 他のユーザが対象
-            const subElement = $("#crewmate-list .crewmates:first");
+            const subElement = $('#crewmate-list .crewmates:first');
             const subColor = subElement.attr('alt');
             const subSrc = `${url}playerIcons/${subColor.substr(1)}.png`;
 
@@ -215,7 +238,7 @@ function setColorPicker(node) {
 /*---- 死体切り替え ----*/
 function setDeadSwitch(node) {
   $(node).dblclick(function() {
-    const crew = $(node).children(".avatar")
+    const crew = $(node).children('.avatar')
     var color = crew.attr('alt');
     if (color) {
       color = color.substr(1);
