@@ -2,7 +2,7 @@
 <p align="center">A chrome extension to help players deduce in among us game.</p>
 
 <p align="center">
- ![among_us_discord_overlay](https://user-images.githubusercontent.com/67271461/104057200-17bdef80-5235-11eb-81da-1003bea7b7a3.gif)
+ <img src="https://user-images.githubusercontent.com/67271461/104057200-17bdef80-5235-11eb-81da-1003bea7b7a3.gif"/>
 </p>
 
 <p align="center">
