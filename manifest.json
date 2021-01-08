@@ -1,0 +1,33 @@
+{
+  "manifest_version": 2,
+  "name": "Among Us Discord Overlay",
+  "description": "Adding Among us tools to the Discord Streamkit Overlay.",
+  "version": "0.1.0",
+
+  "page_action": {
+    "default_icon": {
+      "16": "images/AUDO.png"
+    }
+  },
+
+  "content_scripts": [{
+    "matches": [
+      "https://streamkit.discord.com/overlay/voice/*"
+    ],
+    "css": [
+      "css/lib/spectrum.min.css"
+    ],
+    "js": [
+      "js/lib/jquery-3.2.1.min.js",
+      "js/lib/jquery-ui.min.js",
+      "js/lib/spectrum.min.js",
+      "js/content.js"
+    ]
+  }],
+
+  "web_accessible_resources": [
+    "images/*",
+    "css/lib/spectrum.min.css",
+    "css/style.css"
+  ]
+}
