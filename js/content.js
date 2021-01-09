@@ -2,10 +2,6 @@ var url = chrome.extension.getURL('images/');
 
 /*----CSS読み込み----*/
 function appendCSS(url) {
-  /*var link = document.createElement('link');
-  link.rel = 'stylesheet';
-  link.href = url;
-  document.body.appendChild(link);*/
   $('body').append(`<link rel="stylesheet" href="${url}">`);
 }
 appendCSS(chrome.extension.getURL('css/style.css'));

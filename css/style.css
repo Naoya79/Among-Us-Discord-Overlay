@@ -59,6 +59,7 @@ li.voice-state{
   width: 60px;
   height: 60px;
   outline: none;
+  margin: 0px 2px;
 }
 .user{
   display: contents;
