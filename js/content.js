@@ -8,7 +8,39 @@ appendCSS(chrome.extension.getURL('css/style.css'));
 
 /*----ツール要素追加----*/
 $('body').prepend(
-  `<div class="edit">
+  `<input class="menu-label" id="menu" type="checkbox" />
+  <label class="open menu-label" for="menu">≡</label>
+  <label class="back menu-label" for="menu"></label>
+  <aside>
+    <label for="menu" class="close">×</label>
+    <nav>
+      Joined
+      <ul>
+        <li>list1</li>
+        <li>list2</li>
+      </ul>
+      Leaved
+      <ul>
+        <li>list3</li>
+        <li>list4</li>
+      </ul>
+    </nav>
+    <div id="crewmate-list">
+      <img class="crewmates" src="${url}playerIcons/3f484e.png" alt="#3f484e">
+      <img class="crewmates" src="${url}playerIcons/132fd2.png" alt="#132fd2">
+      <img class="crewmates" src="${url}playerIcons/72491e.png" alt="#72491e">
+      <img class="crewmates" src="${url}playerIcons/39fedb.png" alt="#39fedb">
+      <img class="crewmates" src="${url}playerIcons/127f2d.png" alt="#127f2d">
+      <img class="crewmates" src="${url}playerIcons/50ef3a.png" alt="#50ef3a">
+      <img class="crewmates" src="${url}playerIcons/ef7d0e.png" alt="#ef7d0e">
+      <img class="crewmates" src="${url}playerIcons/ed53b9.png" alt="#ed53b9">
+      <img class="crewmates" src="${url}playerIcons/6b30bc.png" alt="#6b30bc">
+      <img class="crewmates" src="${url}playerIcons/c51111.png" alt="#c51111">
+      <img class="crewmates" src="${url}playerIcons/d5e0ef.png" alt="#d5e0ef">
+      <img class="crewmates" src="${url}playerIcons/f5f558.png" alt="#f5f558">
+    </div>
+  </aside>
+  <div class="edit">
     <a class="button" id="edit-button">Lock</a>
     <a class="button" id="revert-button">Reset</a>
   </div>`
@@ -18,25 +50,10 @@ $('body').append(
     <a class="button map-button" id="TheSkeld">TheSkeld</a>
     <a class="button map-button" id="MiraHQ">MiraHQ</a>
     <a class="button map-button" id="Polus">Polus</a>
-  </div>`
+  </div>
+  <img id="map" src="${url}TheSkeld.png" ondragstart="return false;">`
 );
-$('body').append(
-  `<img id="map" src="${url}TheSkeld.png" ondragstart="return false;">
-  <div id="crewmate-list">
-    <img class="crewmates" src="${url}playerIcons/3f484e.png" alt="#3f484e">
-    <img class="crewmates" src="${url}playerIcons/132fd2.png" alt="#132fd2">
-    <img class="crewmates" src="${url}playerIcons/72491e.png" alt="#72491e">
-    <img class="crewmates" src="${url}playerIcons/39fedb.png" alt="#39fedb">
-    <img class="crewmates" src="${url}playerIcons/127f2d.png" alt="#127f2d">
-    <img class="crewmates" src="${url}playerIcons/50ef3a.png" alt="#50ef3a">
-    <img class="crewmates" src="${url}playerIcons/ef7d0e.png" alt="#ef7d0e">
-    <img class="crewmates" src="${url}playerIcons/ed53b9.png" alt="#ed53b9">
-    <img class="crewmates" src="${url}playerIcons/6b30bc.png" alt="#6b30bc">
-    <img class="crewmates" src="${url}playerIcons/c51111.png" alt="#c51111">
-    <img class="crewmates" src="${url}playerIcons/d5e0ef.png" alt="#d5e0ef">
-    <img class="crewmates" src="${url}playerIcons/f5f558.png" alt="#f5f558">
-  </div>`
-);
+$('body').children('*:not(aside, .menu-label)').wrapAll('<main></main>')
 
 /*---- カラー編集切り替え ----*/
 $('#edit-button').on('click', function() {
