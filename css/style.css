@@ -2,7 +2,7 @@ body {
   background-color: #36393f;
   margin: 0;
   padding: 0;
-  /*overflow: hidden;*/
+  overflow: hidden;
   display: flex;
   min-height: 100vh;
 }
@@ -52,10 +52,10 @@ body {
   95% { bottom:6px; }
   100% { bottom:0px; }
 }
-.voice-states{
+.voice-states {
   height: 70px;
 }
-li.voice-state{
+.voice-states .voice-state {
   position: static;
   display: inline-block;
   width: 60px;
@@ -63,10 +63,10 @@ li.voice-state{
   outline: none;
   margin: 0px 2px;
 }
-.user{
+.voice-states .user{
   display: contents;
 }
-span.name{
+.voice-states .name{
   display: block;
   position: relative;
   bottom: 21px;
@@ -119,19 +119,11 @@ span.name{
   filter: brightness(0.5);
 }
 
-.map-list {
-  position: absolute;
-  right: 0px;
-  top: 0px;
-}
-#TheSkeld {
-  background: #a0a0a0;
-  color: white;
-}
-
 /*-- map --*/
 #map {
   width: 100%;
+  max-height: 85vh;
+  object-fit: contain;
 }
 
 /*-- crewmate image --*/
@@ -157,23 +149,77 @@ span.name{
 /*-- sidebar --*/
 main {
   flex: 1;
+  margin: 10px;
 }
 aside {
-  width: 15%;
-  min-width: 165px;
+  width: 16%;
+  min-width: 180px;
   display: flex;
   flex-direction: column;
   background-color: #2f3136;
+}
+nav {
+  color: #c0c0c0;
+}
+.map-list,
+nav {
+    margin: 10px 10px 0 10px;
+    font-size: 18px;
+}
+#TheSkeld {
+  background: #a0a0a0;
+  color: white;
+}
+.material-icons {
+  font-size: 18px;
+  display: inline-flex;
+  vertical-align: middle;
+}
+.transform {
+  transform: scale(-1, 1);
 }
 ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
+nav .voice-state {
+  height: 24px;
+  padding: 1px 6px;
+  margin-bottom: 2px;
+  border-radius: 4px;
+}
+nav .avatar {
+  width: 24px !important;
+  height: 24px !important;
+  border-radius: 50% !important;
+  float: left;
+  margin-right: 4px;
+}
+nav .name {
+  position: relative;
+  top: -2px;
+}
+#rule-table {
+  font-size: 13px;
+  margin: auto auto 10px 10px;
+  color: #c0c0c0;
+}
+#rule-table tr td:nth-of-type(2) {
+  text-align: right;
+}
+#rule-table input {
+  width: 41px;
+  text-align: right;
+  background: #2f3136;
+  color: #c0c0c0;
+  border: none;
+  outline: none;
+}
 #crewmate-list {
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: auto;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 10px;
 }
 .open,
 .close {
@@ -186,29 +232,35 @@ input[type="checkbox"] {
 @media screen and (max-width: 1000px) {
   main {
     width: 100%;
-    padding-top: 50px;
   }
   .open,
   .close {
     display: block;
+    font-size: 35px;
+    line-height: 25px;
+    color: #a0a0a0;
   }
   .open {
     position: absolute;
+    right: 0;
+    padding: 10px;
+  }
+  .close {
+    margin: 10px 10px 0 auto;
   }
   aside {
     position: absolute;
-    left: -165px;
+    right: -180px;
     height: 100%;
     transition: all 0.2s;
-    /* background: #ffffff; */
   }
   input[type="checkbox"]:checked ~ aside {
-    left: 0;
+    right: 0;
   }
   input[type="checkbox"]:checked ~ .back {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.8);
+    /* background: rgba(0, 0, 0, 0.8); */
   }
 }
