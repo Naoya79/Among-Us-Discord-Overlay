@@ -11,24 +11,23 @@
 </p>
 
 ## Install
-
 Download & install from Chrome Web Store.
 [Under construction]
 
 ## Usage
-
 Access streamkit link from [Discord Streamkit Overlay](https://streamkit.discord.com/overlay).
 ([How to use](https://support.discord.com/hc/en-us/articles/223415707))
 
 ## Features
-
 - Swap player colors
 - Change player dead/alive
 - Draggable players on the map
 - Record emergency button use
 - Change map
+- Show participation status
 
 ## License
 - [MIT](https://github.com/Naoya79/Among-Us-Discord-Overlay/blob/main/LICENSE)
+
 ## Author
 - [Github](https://github.com/Naoya79)
