@@ -153,31 +153,30 @@ function userJoined(node) {
 
 /*----ユーザ退室時の設定----*/
 function userLeaved(node) {
-  /*-- crewmate-list設定 --*/
+  // sidebar設定
+  const id = $(node).attr('data-reactid');
+  const joinedUser = $(`#joined-ul .side-vs[data-reactid='${id}']`);
+  $('#leaved-ul').append(joinedUser);
+
+  // crewmate-list設定
   const color = $(node).children('.avatar').attr('alt');
   const src = `${url}playerIcons/${color.substr(1)}.png`;
   if (colors.some(c => c === color)) {
     $('#crewmate-list').append(`<img class="crewmates" src="${src}" alt="${color}">`);
-  }
-
-  /*-- sidebar設定 --*/
-  const id = $(node).attr('data-reactid');
-  const joinedUser = $(`#joined-ul .side-vs[data-reactid='${id}']`);
-  $('#leaved-ul').append(joinedUser);
+  }  
 }
 
 /*----参加ユーザの初期設定----*/
 function setCrewmate(node) {
-  /*-- sidebar設定 --*/
+  // sidebar設定
   const id = $(node).attr('data-reactid');
   const leavedUser = $(`#leaved-ul .side-vs[data-reactid='${id}']`);
   let color = 'rgba(0, 0, 0, 0)';
 
   if (leavedUser.length != 0) {
     const oldColor = leavedUser.attr('alt');
-    console.log(`oldColor:${oldColor}`);
-    console.log($(`#joined-ul .side-vs[alt="${oldColor}"]`));
-    if ( $(`#joined-ul .side-vs[alt="${oldColor}"]`).length == 0 ) {
+    const joinedUser = $(`#joined-ul .side-vs[alt="${oldColor}"]`);
+    if ( joinedUser.length == 0 ) {
       color = oldColor;
     }
     leavedUser.remove();
@@ -185,10 +184,9 @@ function setCrewmate(node) {
 
   const sideElement = $(node).clone().appendTo('#joined-ul');
   sideElement.addClass('side-vs');
-  sideElement.attr('alt', color);
-  sideElement.css('background-color', color);
+  setElementColor(sideElement, color);
 
-  /*-- avatar設定 --*/
+  // avatar設定
   if (colors.some(c => c === color)) {
     $(node).children('.avatar').attr('src', `${url}playerIcons/${color.substr(1)}.png`);
     $(`#crewmate-list .crewmates[alt='${color}']`).remove();
@@ -258,9 +256,11 @@ function setColorPicker(node) {
       const oldElement = $(node).children('.avatar');
       const oldColor = oldElement.attr('alt');
       const oldSrc = `${url}playerIcons/${oldColor.substr(1)}.png`;
+      const oldJoinedUser = $(`#joined-ul .side-vs[data-reactid='${$(node).attr('data-reactid')}']`);
       const newColor = color.toHexString();
       const newSrc = `${url}playerIcons/${color.toHex()}.png`;
       const newElement = $(`.crewmates[alt='${newColor}']`);
+      const newJoinedUser = $(`#joined-ul .side-vs[data-reactid='${newElement.parent().attr('data-reactid')}']`);
 
       if (colors.some(c => c === newColor) && oldColor != newColor) {
         // 選択したカラーをスワップ
@@ -269,6 +269,7 @@ function setColorPicker(node) {
             'src': oldSrc,
             'alt': oldColor
           });
+          setElementColor(newJoinedUser, oldColor);
         } else { // 元がユーザ画像
           if (newElement.hasClass('avatar')) { // 他のユーザが対象
             const subElement = $('#crewmate-list .crewmates:first');
@@ -279,6 +280,7 @@ function setColorPicker(node) {
               'src': subSrc,
               'alt': subColor
             });
+            setElementColor(newJoinedUser, subColor);
             subElement.remove();
           } else { // クルーリストが対象
             newElement.remove();
@@ -289,6 +291,7 @@ function setColorPicker(node) {
           'src': newSrc,
           'alt': newColor
         });
+        setElementColor(oldJoinedUser, newColor);
       }
     }
   });
@@ -308,4 +311,10 @@ function setDeadSwitch(node) {
       crew.attr('src', src);
     }
   });
+}
+
+/*---- サイドバーのユーザの色設定 ----*/
+function setElementColor(element, color) {
+  element.attr('alt', color);
+  element.css('background-color', color);
 }
