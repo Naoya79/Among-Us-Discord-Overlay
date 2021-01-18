@@ -9,76 +9,118 @@ body {
 
 /*-- Discord Overlay --*/
 .avatar {
-  height:60px !important;
-  width:60px !important;
-  border-radius:0 !important;
+  height: 60px !important;
+  width: 60px !important;
+  border-radius: 0 !important;
   filter: brightness(70%);
   object-fit: contain;
   outline: none;
   box-sizing: content-box;
 }
 .speaking {
-  border-color:rgba(0,0,0,0) !important;
-  position:relative;
+  border-color: rgba(0, 0, 0, 0) !important;
+  position: relative;
   animation-name: speak-now;
   animation-duration: 5000ms;
-  animation-fill-mode:forwards;
-  filter: brightness(100%) ;
-  filter:
-    drop-shadow(-1px -1px 2px #43b581) drop-shadow(1px -1px 2px #43b581)
+  animation-fill-mode: forwards;
+  filter: brightness(100%);
+  filter: drop-shadow(-1px -1px 2px #43b581) drop-shadow(1px -1px 2px #43b581)
     drop-shadow(-1px 1px 2px #43b581) drop-shadow(1px 1px 2px #43b581);
   /*filter: drop-shadow(right bottom blur color);*/
 }
 @keyframes speak-now {
-  0% { bottom:0px; }
-  5% { bottom:6px; }
-  10% { bottom:0px; }
-  15% { bottom:6px; }
-  20% { bottom:0px; }
-  25% { bottom:6px; }
-  30% { bottom:0px; }
-  35% { bottom:6px; }
-  40% { bottom:0px; }
-  45% { bottom:6px; }
-  50% { bottom:0px; }
-  55% { bottom:6px; }
-  60% { bottom:0px; }
-  65% { bottom:6px; }
-  70% { bottom:0px; }
-  75% { bottom:6px; }
-  80% { bottom:0px; }
-  85% { bottom:6px; }
-  90% { bottom:0px; }
-  95% { bottom:6px; }
-  100% { bottom:0px; }
+  0% {
+    bottom: 0px;
+  }
+  5% {
+    bottom: 6px;
+  }
+  10% {
+    bottom: 0px;
+  }
+  15% {
+    bottom: 6px;
+  }
+  20% {
+    bottom: 0px;
+  }
+  25% {
+    bottom: 6px;
+  }
+  30% {
+    bottom: 0px;
+  }
+  35% {
+    bottom: 6px;
+  }
+  40% {
+    bottom: 0px;
+  }
+  45% {
+    bottom: 6px;
+  }
+  50% {
+    bottom: 0px;
+  }
+  55% {
+    bottom: 6px;
+  }
+  60% {
+    bottom: 0px;
+  }
+  65% {
+    bottom: 6px;
+  }
+  70% {
+    bottom: 0px;
+  }
+  75% {
+    bottom: 6px;
+  }
+  80% {
+    bottom: 0px;
+  }
+  85% {
+    bottom: 6px;
+  }
+  90% {
+    bottom: 0px;
+  }
+  95% {
+    bottom: 6px;
+  }
+  100% {
+    bottom: 0px;
+  }
 }
 .voice-states {
   height: 70px;
 }
 .voice-states .voice-state {
-  position: static;
   display: inline-block;
   width: 60px;
   height: 60px;
   outline: none;
-  margin: 0px 2px;
+  padding: 0px 2px;
+  cursor: pointer;
+  z-index: 2;
 }
-.voice-states .user{
+.voice-states .user {
   display: contents;
 }
-.voice-states .name{
+.voice-states .name {
   display: block;
   position: relative;
   bottom: 21px;
   left: 3px;
-  cursor: default;
+  cursor: pointer;
   font-size: 10px !important;
   width: 60px;
   line-height: 18px !important;
   white-space: nowrap;
   text-overflow: clip;
   text-align: center;
-  background-color: rgba(0, 0, 0, .7) !important;
+  background-color: rgba(0, 0, 0, 0.7) !important;
   padding: 0 !important;
   overflow: hidden;
 }
@@ -96,17 +138,20 @@ body {
   text-align: center;
   text-decoration: none !important;
   color: #bbbbbb;
+  background-color: #36393f;
   border: solid 2px #a0a0a0;
   border-radius: 3px;
-  transition: .4s;
+  transition: 0.4s;
   cursor: pointer;
+  z-index: 1;
+  position: relative;
 }
 .button:visited {
   color: #bbbbbb;
 }
 .button:hover {
-  background: #a0a0a0;
-  color: white;
+  background: #a0a0a0 !important;
+  color: white !important;
 }
 
 .emergency-button {
@@ -160,11 +205,12 @@ aside {
 }
 nav {
   color: #c0c0c0;
+  cursor: default;
 }
 .map-list,
 nav {
-    margin: 10px 10px 0 10px;
-    font-size: 18px;
+  margin: 10px 10px 0 10px;
+  font-size: 18px;
 }
 #TheSkeld {
   background: #a0a0a0;
@@ -204,6 +250,8 @@ nav .name {
   font-size: 13px;
   margin: auto auto 10px 10px;
   color: #c0c0c0;
+  z-index: 1;
+  cursor: default;
 }
 #rule-table tr td:nth-of-type(2) {
   text-align: right;
@@ -211,19 +259,21 @@ nav .name {
 #rule-table input {
   width: 41px;
   text-align: right;
-  background: #2f3136;
+  background: rgba(0, 0, 0, 0);
   color: #c0c0c0;
   border: none;
   outline: none;
 }
 #crewmate-list {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0 10px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 10px;
 }
 .open,
 .close {
   display: none;
+  cursor: pointer;
+  z-index: 1;
 }
 input[type="checkbox"] {
   position: absolute;
@@ -253,6 +303,7 @@ input[type="checkbox"] {
     right: -180px;
     height: 100%;
     transition: all 0.2s;
+    z-index: 1;
   }
   input[type="checkbox"]:checked ~ aside {
     right: 0;
