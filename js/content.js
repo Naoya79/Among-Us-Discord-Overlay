@@ -178,33 +178,38 @@ function userLeaved(node) {
 
 /*----参加ユーザの初期設定----*/
 function setCrewmate(node) {
-  // sidebar設定
+  /* sidebar設定 */
   const id = $(node).attr("data-reactid");
   const leavedUser = $(`#leaved-ul .side-vs[data-reactid='${id}']`);
   let color = "rgba(0, 0, 0, 0)";
+  let dead = "";
 
   if (leavedUser.length != 0) {
+    // 退出履歴有り
     const oldColor = leavedUser.attr("alt");
     const joinedUser = $(`#joined-ul .side-vs[alt="${oldColor}"]`);
+    dead = leavedUser.attr("data-dead");
     if (joinedUser.length == 0) {
+      // 色被り無し
       color = oldColor;
     }
     leavedUser.remove();
   }
 
   const sideElement = $(node).clone().appendTo("#joined-ul");
-  sideElement.attr("class", "side-vs");
+  sideElement.attr({ class: "side-vs", "data-dead": "" });
   sideElement.find(".avatar").attr("class", "side-avatar");
   setElementColor(sideElement, color);
 
-  // avatar設定
+  /* avatar設定 */
   if (colors.some((c) => c === color)) {
     $(node)
       .children(".avatar")
-      .attr("src", `${url}playerIcons/${color.substr(1)}.png`);
+      .attr("src", `${url}playerIcons/${color.substr(1) + dead}.png`);
     $(`#crewmate-list .avatar[alt='${color}']`).remove();
   }
   $(node).children(".avatar").attr("alt", color);
+  $(node).children(".avatar").attr("data-dead", dead);
 }
 
 /*---- Draggable設定 ----*/
@@ -326,13 +331,15 @@ function setDeadSwitch(node) {
   $(node).dblclick(function () {
     const crew = $(node).children(".avatar");
     var color = crew.attr("alt");
-    if (color) {
-      color = color.substr(1);
-      var src = crew.attr("src").replace(color + "-dead", color);
-      if (src == crew.attr("src")) {
-        src = crew.attr("src").replace(color, color + "-dead");
-      }
-      crew.attr("src", src);
+
+    if (colors.some((c) => c === color)) {
+      const sideUser = $(
+        `#joined-ul .side-vs[data-reactid='${$(node).attr("data-reactid")}']`
+      );
+      var dead = sideUser.attr("data-dead") === "" ? "-dead" : "";
+      sideUser.attr("data-dead", dead);
+      crew.attr("data-dead", dead);
+      crew.attr("src", `${url}playerIcons/${color.substr(1) + dead}.png`);
     }
   });
 }
