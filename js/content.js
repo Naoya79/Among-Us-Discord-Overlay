@@ -69,18 +69,18 @@ $("body").append(`
       </tr>
     </table>
     <div id="crewmate-list">
-      <img class="crewmates" src="${url}playerIcons/3f484e.png" alt="#3f484e">
-      <img class="crewmates" src="${url}playerIcons/132fd2.png" alt="#132fd2">
-      <img class="crewmates" src="${url}playerIcons/72491e.png" alt="#72491e">
-      <img class="crewmates" src="${url}playerIcons/39fedb.png" alt="#39fedb">
-      <img class="crewmates" src="${url}playerIcons/127f2d.png" alt="#127f2d">
-      <img class="crewmates" src="${url}playerIcons/50ef3a.png" alt="#50ef3a">
-      <img class="crewmates" src="${url}playerIcons/ef7d0e.png" alt="#ef7d0e">
-      <img class="crewmates" src="${url}playerIcons/ed53b9.png" alt="#ed53b9">
-      <img class="crewmates" src="${url}playerIcons/6b30bc.png" alt="#6b30bc">
-      <img class="crewmates" src="${url}playerIcons/c51111.png" alt="#c51111">
-      <img class="crewmates" src="${url}playerIcons/d5e0ef.png" alt="#d5e0ef">
-      <img class="crewmates" src="${url}playerIcons/f5f558.png" alt="#f5f558">
+      <img class="avatar" src="${url}playerIcons/3f484e.png" alt="#3f484e">
+      <img class="avatar" src="${url}playerIcons/132fd2.png" alt="#132fd2">
+      <img class="avatar" src="${url}playerIcons/72491e.png" alt="#72491e">
+      <img class="avatar" src="${url}playerIcons/39fedb.png" alt="#39fedb">
+      <img class="avatar" src="${url}playerIcons/127f2d.png" alt="#127f2d">
+      <img class="avatar" src="${url}playerIcons/50ef3a.png" alt="#50ef3a">
+      <img class="avatar" src="${url}playerIcons/ef7d0e.png" alt="#ef7d0e">
+      <img class="avatar" src="${url}playerIcons/ed53b9.png" alt="#ed53b9">
+      <img class="avatar" src="${url}playerIcons/6b30bc.png" alt="#6b30bc">
+      <img class="avatar" src="${url}playerIcons/c51111.png" alt="#c51111">
+      <img class="avatar" src="${url}playerIcons/d5e0ef.png" alt="#d5e0ef">
+      <img class="avatar" src="${url}playerIcons/f5f558.png" alt="#f5f558">
     </div>
   </aside>
 `);
@@ -171,7 +171,7 @@ function userLeaved(node) {
   const src = `${url}playerIcons/${color.substr(1)}.png`;
   if (colors.some((c) => c === color)) {
     $("#crewmate-list").append(
-      `<img class="crewmates" src="${src}" alt="${color}">`
+      `<img class="avatar" src="${src}" alt="${color}">`
     );
   }
 }
@@ -193,7 +193,8 @@ function setCrewmate(node) {
   }
 
   const sideElement = $(node).clone().appendTo("#joined-ul");
-  sideElement.addClass("side-vs");
+  sideElement.attr("class", "side-vs");
+  sideElement.find(".avatar").attr("class", "side-avatar");
   setElementColor(sideElement, color);
 
   // avatar設定
@@ -201,10 +202,9 @@ function setCrewmate(node) {
     $(node)
       .children(".avatar")
       .attr("src", `${url}playerIcons/${color.substr(1)}.png`);
-    $(`#crewmate-list .crewmates[alt='${color}']`).remove();
+    $(`#crewmate-list .avatar[alt='${color}']`).remove();
   }
   $(node).children(".avatar").attr("alt", color);
-  $(node).children(".avatar").addClass("crewmates");
 }
 
 /*---- Draggable設定 ----*/
@@ -275,7 +275,7 @@ function setColorPicker(node) {
       );
       const newColor = color.toHexString();
       const newSrc = `${url}playerIcons/${color.toHex()}.png`;
-      const newElement = $(`.crewmates[alt='${newColor}']`);
+      const newElement = $(`.avatar[alt='${newColor}']`);
       const newJoinedUser = $(
         `#joined-ul .side-vs[data-reactid='${newElement
           .parent()
@@ -295,7 +295,7 @@ function setColorPicker(node) {
           // 元がユーザ画像
           if (newElement.hasClass("avatar")) {
             // 他のユーザが対象
-            const subElement = $("#crewmate-list .crewmates:first");
+            const subElement = $("#crewmate-list .avatar:first");
             const subColor = subElement.attr("alt");
             const subSrc = `${url}playerIcons/${subColor.substr(1)}.png`;
 

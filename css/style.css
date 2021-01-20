@@ -172,10 +172,9 @@ body {
 }
 
 /*-- crewmate image --*/
-.crewmates {
-  height: 40px;
-  width: 40px;
-  object-fit: contain;
+#crewmate-list .avatar {
+  height: 30px !important;
+  width: 30px !important;
 }
 
 /*-- color-panel --*/
@@ -229,13 +228,13 @@ ul {
   padding: 0;
   margin: 0;
 }
-nav .voice-state {
+nav .side-vs {
   height: 24px;
   padding: 1px 6px;
   margin-bottom: 2px;
   border-radius: 4px;
 }
-nav .avatar {
+nav .side-avatar {
   width: 24px !important;
   height: 24px !important;
   border-radius: 50% !important;
