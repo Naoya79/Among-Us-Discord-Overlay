@@ -11,13 +11,18 @@
   <a href="http://fabricjs.com/"><img src="https://user-images.githubusercontent.com/67271461/104888448-1b2d4580-59b0-11eb-811f-2a12310df39d.png" height="40px;" /></a>
 </p>
 
+## Required
+- Chrome Desktop App
+- Discord Desktop App
+
 ## Install
 Download & install from Chrome Web Store.
 [Under construction]
 
 ## Usage
-Access streamkit link from [Discord Streamkit Overlay](https://streamkit.discord.com/overlay).
+1. Access streamkit link from [Discord Streamkit Overlay](https://streamkit.discord.com/overlay).
 ([How to use](https://support.discord.com/hc/en-us/articles/223415707))
+1. Manipulating elements on the screen
 
 ## Features
 - Swap player colors
