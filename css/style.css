@@ -8,7 +8,7 @@ body {
 }
 
 /*-- Discord Overlay --*/
-.voice-state .avatar {
+.avatar {
   height: 60px !important;
   width: 60px !important;
   border-radius: 0 !important;
@@ -173,9 +173,9 @@ body {
 
 /*-- crewmate image --*/
 #crewmate-list .avatar {
-  height: 30px;
-  width: 30px;
-  object-fit: contain;
+  height: 30px !important;
+  width: 30px !important;
+  filter: brightness(1);
 }
 
 /*-- color-panel --*/
