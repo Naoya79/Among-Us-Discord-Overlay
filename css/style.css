@@ -234,6 +234,7 @@ nav .side-vs {
   padding: 1px 6px;
   margin-bottom: 2px;
   border-radius: 4px;
+  white-space: nowrap;
 }
 nav .side-avatar {
   width: 24px !important;
