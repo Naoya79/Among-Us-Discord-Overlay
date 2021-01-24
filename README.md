@@ -16,8 +16,7 @@
 - Discord Desktop App
 
 ## Install
-Download & install from Chrome Web Store.
-[Under construction]
+Download & install from ***[Chrome Web Store](https://chrome.google.com/webstore/detail/among-us-discord-overlay/oommbconacammknogfinbibmnohcalpj)***
 
 ## Usage
 
