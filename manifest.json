@@ -4,10 +4,11 @@
   "description": "Adding Among us tools to the Discord Streamkit Overlay.",
   "version": "0.1.0",
 
-  "page_action": {
+  "browser_action": {
     "default_icon": {
       "16": "images/icon.png"
-    }
+    },
+    "default_popup": "popup.html"
   },
 
   "content_scripts": [

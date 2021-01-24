@@ -20,9 +20,18 @@ Download & install from Chrome Web Store.
 [Under construction]
 
 ## Usage
-1. Access streamkit link from [Discord Streamkit Overlay](https://streamkit.discord.com/overlay).
+
+#### From Extensions popup
+1. Click the Extensions icon
+2. Enter the target server ID and channel ID
+3. Click the "Open" button and access streamkit link
+<p align="center">
+ <img src="https://user-images.githubusercontent.com/67271461/105638903-b9da0a80-5eb8-11eb-8eb2-ff2ff749ad10.png"/>
+</p>
+
+#### From Official site
+Access streamkit link from [Discord Streamkit Overlay](https://streamkit.discord.com/overlay).
 ([How to use](https://support.discord.com/hc/en-us/articles/223415707))
-1. Manipulating elements on the screen
 
 ## Features
 - Swap player colors
@@ -38,3 +47,7 @@ Download & install from Chrome Web Store.
 
 ## Author
 - [Github](https://github.com/Naoya79)
+
+## Acknowledgments
+- Very useful tool - [Discord Streamkit Overlay](https://streamkit.discord.com/overlay)
+- Inspired - [Kedyn/fusliez-notes](https://github.com/Kedyn/fusliez-notes)

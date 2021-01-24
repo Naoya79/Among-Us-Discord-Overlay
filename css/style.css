@@ -207,6 +207,10 @@ nav {
   color: #c0c0c0;
   cursor: default;
 }
+#joined-ul,
+#leaved-ul {
+  overflow: hidden;
+}
 .map-list,
 nav {
   margin: 10px 10px 0 10px;
