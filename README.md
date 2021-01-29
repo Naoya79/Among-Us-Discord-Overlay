@@ -45,7 +45,7 @@ Access streamkit link from [Discord Streamkit Overlay](https://streamkit.discord
 - Change map
 - Show participation status
 - Free Drawing
-- Save Screen Shot
+- Save Screen Shots
 
 ## License
 
