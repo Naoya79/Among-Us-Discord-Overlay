@@ -83,3 +83,11 @@ body {
   background: #a0a0a0;
   color: #000000;
 }
+
+#github {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 18px;
+  margin: 4px;
+}

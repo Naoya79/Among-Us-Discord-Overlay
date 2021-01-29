@@ -12,15 +12,18 @@
 </p>
 
 ## Required
+
 - Chrome Desktop App
 - Discord Desktop App
 
 ## Install
-Download & install from ***[Chrome Web Store](https://chrome.google.com/webstore/detail/among-us-discord-overlay/oommbconacammknogfinbibmnohcalpj)***
+
+Download & install from **_[Chrome Web Store](https://chrome.google.com/webstore/detail/among-us-discord-overlay/oommbconacammknogfinbibmnohcalpj)_**
 
 ## Usage
 
 #### From Extensions popup
+
 1. Click the Extensions icon
 2. Enter the target server ID and channel ID
 3. Click the "Open" button and access streamkit link
@@ -28,11 +31,13 @@ Download & install from ***[Chrome Web Store](https://chrome.google.com/webstore
  <img src="https://user-images.githubusercontent.com/67271461/105638903-b9da0a80-5eb8-11eb-8eb2-ff2ff749ad10.png"/>
 </p>
 
-#### From Official site
+#### From Official Discord site
+
 Access streamkit link from [Discord Streamkit Overlay](https://streamkit.discord.com/overlay).
 ([How to use](https://support.discord.com/hc/en-us/articles/223415707))
 
 ## Features
+
 - Swap player colors
 - Change player dead/alive
 - Draggable players on the map
@@ -40,13 +45,17 @@ Access streamkit link from [Discord Streamkit Overlay](https://streamkit.discord
 - Change map
 - Show participation status
 - Free Drawing
+- Save Screen Shot
 
 ## License
+
 - [MIT](https://github.com/Naoya79/Among-Us-Discord-Overlay/blob/main/LICENSE)
 
 ## Author
+
 - [Github](https://github.com/Naoya79)
 
 ## Acknowledgments
+
 - Very useful tool - [Discord Streamkit Overlay](https://streamkit.discord.com/overlay)
 - Inspired - [Kedyn/fusliez-notes](https://github.com/Kedyn/fusliez-notes)

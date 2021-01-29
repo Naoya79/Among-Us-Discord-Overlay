@@ -3,7 +3,7 @@ appendCSS(chrome.extension.getURL("css/paint.css"));
 
 // html
 let colorElement = "";
-colors.forEach(function (value) {
+CREW_COLORS.forEach(function (value) {
   const className = value.substr(1);
   colorElement += `<a class="${className}" data-color="${value}" style="background-color: ${value};"></a>`;
 });
