@@ -205,23 +205,17 @@ aside {
   flex-direction: column;
   background-color: #2f3136;
 }
-.map-list {
-  display: flex;
-  font-size: 14px;
-  margin: 10px;
-}
-.map-button {
-  width: 64px;
-}
-#TheSkeld {
-  background: #a0a0a0;
-  color: white;
-}
 nav {
   color: #c0c0c0;
   cursor: default;
   margin: 0 10px;
   font-size: 18px;
+}
+.participation {
+  margin: 10px 0;
+}
+.participation i {
+  margin-left: 2px;
 }
 #joined-ul,
 #leaved-ul {
@@ -262,6 +256,19 @@ nav .side-avatar {
 nav .name {
   position: relative;
 }
+.side-vs[data-dead="-dead"] {
+  filter: brightness(0.5);
+}
+.side-vs[data-dead="-dead"]::after {
+  content: "×";
+  color: #ff6060;
+  position: absolute;
+  left: 0;
+  font-size: 40px;
+  font-weight: bold;
+  -webkit-text-stroke: 2px #333;
+}
+
 .open,
 .close {
   display: none;
@@ -414,6 +421,21 @@ aside footer {
   margin: auto 10px 10px 10px;
   z-index: 1;
 }
+.settings {
+  display: flex;
+}
+/* map list */
+.map-list {
+  font-size: 14px;
+  margin: 4px 6px 0 0;
+}
+.map-button {
+  width: 80px;
+}
+#TheSkeld {
+  background: #a0a0a0;
+  color: white;
+}
 /* rule table */
 #rule-table {
   font-size: 13px;
@@ -431,6 +453,17 @@ aside footer {
   color: #c0c0c0;
   border: none;
   outline: none;
+}
+#switch {
+  display: none;
+}
+.switch-trigger::after {
+  content: "On";
+  cursor: pointer;
+  margin-right: 17px;
+}
+#switch:checked + .switch-trigger::after {
+  content: "Off";
 }
 /* crewmate list */
 #crewmate-list {

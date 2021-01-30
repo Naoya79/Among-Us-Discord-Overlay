@@ -48,15 +48,10 @@ $("body").append(`
   <label class="back menu-label" for="menu"></label>
   <aside>
     <label for="menu" class="close">×</label>
-    <div class="map-list">
-      <a class="button map-button" id="TheSkeld">TheSkeld</a>
-      <a class="button map-button" id="MiraHQ">MiraHQ</a>
-      <a class="button map-button" id="Polus">Polus</a>
-    </div>
     <nav>
       <div class="participation">
         <div class="joined-container">
-          <i class="material-icons md-light">record_voice_over</i> Joined
+          <i class="material-icons md-light">person</i> Player
           <ul id="joined-ul"></ul>
         </div>
         <div class="leaved-container">
@@ -75,28 +70,42 @@ $("body").append(`
     </nav>
     <footer>
       <hr class="divider">
-      <table id="rule-table">
-        <tr>
-          <td>Emergency Cooldown:</td>
-          <td><input type="number" value="15" min="0" max="60" step="5"></td>
-        </tr>
-        <tr>
-          <td>Kill Cooldown:</td>
-          <td><input type="number" value="35.0" min="10.0" max="60.0" step="2.5"></td>
-        </tr>
-        <tr>
-          <td>#Common Tasks:</td>
-          <td><input type="number" value="2" min="0" max="2" step="1"></td>
-        </tr>
-        <tr>
-          <td>#Long Tasks:</td>
-          <td><input type="number" value="3" min="0" max="3" step="1"></td>
-        </tr>
-        <tr>
-          <td>#Short Tasks:</td>
-          <td><input type="number" value="5" min="0" max="5" step="1"></td>
-        </tr>
-      </table>
+      <div class="settings">
+        <div class="map-list">
+          <a class="button map-button" id="TheSkeld">TheSkeld</a>
+          <a class="button map-button" id="MiraHQ">MiraHQ</a>
+          <a class="button map-button" id="Polus">Polus</a>
+        </div>
+        <table id="rule-table">
+          <tr>
+            <td>Anonymous Votes:</td>
+            <td>
+              <input id="switch" type="checkbox">
+              <label for="switch" class="switch-trigger"></label>
+            </td>
+          </tr>
+          <tr>
+            <td>Emergency Cooldown:</td>
+            <td><input type="number" value="15" min="0" max="60" step="5"></td>
+          </tr>
+          <tr>
+            <td>Kill Cooldown:</td>
+            <td><input type="number" value="35.0" min="10.0" max="60.0" step="2.5"></td>
+          </tr>
+          <tr>
+            <td>#Common Tasks:</td>
+            <td><input type="number" value="2" min="0" max="2" step="1"></td>
+          </tr>
+          <tr>
+            <td>#Long Tasks:</td>
+            <td><input type="number" value="3" min="0" max="3" step="1"></td>
+          </tr>
+          <tr>
+            <td>#Short Tasks:</td>
+            <td><input type="number" value="5" min="0" max="5" step="1"></td>
+          </tr>
+        </table>
+      </div>
       <div id="crewmate-list">
         <img class="avatar" src="${CHROME_EXT_URL}playerIcons/3f484e.png" alt="#3f484e">
         <img class="avatar" src="${CHROME_EXT_URL}playerIcons/132fd2.png" alt="#132fd2">
