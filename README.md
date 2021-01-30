@@ -43,7 +43,7 @@ Access streamkit link from [Discord Streamkit Overlay](https://streamkit.discord
 - Draggable players on the map
 - Record emergency button use
 - Change map
-- Show participation status
+- Show player status
 - Free Drawing
 - Save Screen Shots
 
