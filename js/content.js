@@ -275,20 +275,22 @@ function setDraggable(node) {
 
 /*---- EmergencyButton設定 ----*/
 function setEmergencyButton(node) {
-  var button = $(
-    `<img class="emergency-button" src="${CHROME_EXT_URL}EmergencyButton_close.png">`
-  ).appendTo($(node).children(".user"));
-  button.on("click", function () {
-    var src = $(this).attr("src");
-    if ($(this).css("filter") == "brightness(0.5)") {
-      $(this).css("filter", "brightness(1.0)");
-      src = src.replace("close", "open");
-    } else {
-      $(this).css("filter", "brightness(0.5)");
-      src = src.replace("open", "close");
-    }
-    $(this).attr("src", src);
-  });
+  if (!$(node).find(".emergency-button").length) {
+    var button = $(
+      `<img class="emergency-button" src="${CHROME_EXT_URL}EmergencyButton_close.png">`
+    ).appendTo($(node).children(".user"));
+    button.on("click", function () {
+      var src = $(this).attr("src");
+      if ($(this).css("filter") == "brightness(0.5)") {
+        $(this).css("filter", "brightness(1.0)");
+        src = src.replace("close", "open");
+      } else {
+        $(this).css("filter", "brightness(0.5)");
+        src = src.replace("open", "close");
+      }
+      $(this).attr("src", src);
+    });
+  }
 }
 
 /*----カラーパネルの設定----*/
@@ -473,3 +475,7 @@ function setImg(src, height, offset) {
 $("#clear-ss").on("click", function () {
   $(".preview-img-container").empty();
 });
+
+// $("body").on("click", function (e) {
+//   console.log("client=" + e.clientX + "," + e.clientY);
+// });
