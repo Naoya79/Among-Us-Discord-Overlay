@@ -416,7 +416,14 @@ async function addPreview() {
   var mapOffset = $("#map").offset();
   await setImg(mapSrc, mapHeight, mapOffset);
 
-  // TODO: paint描画
+  // paint描画
+  var paintSrc = canvas.toDataURL({
+    width: $("main").width() + 20,
+    height: $("main").height() + 20,
+  });
+  var paintHeight = $("main").height() + 20;
+  var paintOffset = { top: 0, left: 0 };
+  await setImg(paintSrc, paintHeight, paintOffset);
 
   // avatar描画
   for await (avatar of $(".voice-state .avatar")) {
