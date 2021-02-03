@@ -24,9 +24,10 @@ appendCSS(chrome.extension.getURL("css/style.css"));
 /*----ツール要素追加----*/
 $("body").prepend(`
   <canvas id="preview-canvas"></canvas>
+  <input id="lock" type="checkbox">
   <div class="edit">
-    <a class="button" id="edit-button">Lock</a>
-    <a class="button" id="revert-button">Reset</a>
+    <label  for="lock"><a class="button" id="lock-button">Lock</a></label>
+    <a class="button" id="reset-button">Reset</a>
   </div>
 `);
 $("body").append(`
@@ -50,12 +51,16 @@ $("body").append(`
     <label for="menu" class="close">×</label>
     <nav>
       <div class="participation">
-        <div class="joined-container">
+        <div class="player-container display-none">
           <i class="material-icons md-light">person</i> Player
+          <ul id="player-ul"></ul>
+        </div>
+        <div class="joined-container">
+          <i class="material-icons md-light">login</i> Joined
           <ul id="joined-ul"></ul>
         </div>
         <div class="leaved-container">
-          <i class="material-icons md-light transform">phone_disabled</i> Leaved
+          <i class="material-icons md-light transform">logout</i> Leaved
           <ul id="leaved-ul"></ul>
         </div>
       </div>
@@ -125,20 +130,32 @@ $("body").append(`
 `);
 $("body").children("*:not(aside, .menu-label)").wrapAll("<main></main>");
 
-/*---- カラー編集切り替え ----*/
-$("#edit-button").on("click", function () {
-  const button = $(this).text();
-  if (button == "Lock") {
-    $(".voice-state").spectrum("disable");
-    $(this).text("Unlock");
-  } else {
-    $(".voice-state").spectrum("enable");
+/*---- ロック切り替え ----*/
+let isLock = false;
+$("#lock-button").on("click", function () {
+  // ロック外す
+  if (isLock) {
+    isLock = false;
+    $(".voice-state").spectrum("enable"); // カラーパレット有効化
     $(this).text("Lock");
+    $("#player-ul").empty(); // プレイヤーリスト削除
+    $(".temp-vs").remove(); // 退室済アバター削除
   }
+  // ロックする
+  else {
+    isLock = true;
+    $(".voice-state").spectrum("disable"); // カラーパレット無効化
+    $(this).text("Unlock");
+    $(`#joined-ul .side-vs[alt!='rgba(0, 0, 0, 0)']`)
+      .clone()
+      .appendTo("#player-ul");
+  }
+  $(".player-container").toggleClass("display-none");
+  $(".joined-container").toggleClass("display-none");
 });
 
 /*---- 初期位置 ----*/
-$("#revert-button").on("click", function () {
+$("#reset-button").on("click", function () {
   $(".voice-state").each(function (index, element) {
     $(element).css({
       position: "relative",
@@ -173,7 +190,9 @@ function callback(mutations) {
   mutations.forEach((mutation) => {
     mutation.addedNodes.forEach((node) => {
       if ($(node).hasClass("voice-state")) {
-        userJoined(node);
+        if (!$(node).hasClass("temp-vs")) {
+          userJoined(node);
+        }
       }
     });
     mutation.removedNodes.forEach((node) => {
@@ -205,13 +224,20 @@ function userLeaved(node) {
   const joinedUser = $(`#joined-ul .side-vs[data-reactid='${id}']`);
   $("#leaved-ul").append(joinedUser);
 
-  // crewmate-list設定
-  const color = $(node).children(".avatar").attr("alt");
-  const src = `${CHROME_EXT_URL}playerIcons/${color.substr(1)}.png`;
-  if (CREW_COLORS.some((c) => c === color)) {
-    $("#crewmate-list").append(
-      `<img class="avatar" src="${src}" alt="${color}">`
-    );
+  if (getIsPlayer(node)) {
+    $(node).addClass("temp-vs");
+    $(node).attr("data-reactid", "");
+    $(node).attr("temp-reactid", id);
+    $(".voice-states").append($(node));
+  } else {
+    // crewmate-list設定
+    const color = $(node).children(".avatar").attr("alt");
+    const src = `${CHROME_EXT_URL}playerIcons/${color.substr(1)}.png`;
+    if (CREW_COLORS.some((c) => c === color) && !isLock) {
+      $("#crewmate-list").append(
+        `<img class="avatar" src="${src}" alt="${color}">`
+      );
+    }
   }
 }
 
@@ -224,15 +250,20 @@ function setCrewmate(node) {
   let dead = "";
 
   if (leavedUser.length != 0) {
-    // 退出履歴有り
-    const oldColor = leavedUser.attr("alt");
-    const joinedUser = $(`#joined-ul .side-vs[alt="${oldColor}"]`);
-    dead = leavedUser.attr("data-dead");
-    if (joinedUser.length == 0) {
-      // 色被り無し
-      color = oldColor;
+    if (!isLock || getIsPlayer(node)) {
+      // 退出履歴有り
+      const oldColor = leavedUser.attr("alt");
+      const joinedUser = $(`#joined-ul .side-vs[alt="${oldColor}"]`);
+      if (joinedUser.length == 0) {
+        // 色被り無し
+        color = oldColor;
+      }
     }
     leavedUser.remove();
+  }
+  if (getIsPlayer(node)) {
+    const playerUser = $(`#player-ul .side-vs[data-reactid='${id}']`);
+    dead = playerUser.attr("data-dead");
   }
 
   const sideElement = $(node).clone().appendTo("#joined-ul");
@@ -241,6 +272,17 @@ function setCrewmate(node) {
   setElementColor(sideElement, color);
 
   /* avatar設定 */
+  const tempAvatar = $(`.temp-vs[temp-reactid='${id}']`);
+  if (tempAvatar.css("position") == "absolute") {
+    const pos = tempAvatar.offset();
+    $(node).css({
+      position: "absolute",
+      left: pos.left,
+      top: pos.top,
+    });
+  }
+  tempAvatar.remove();
+
   if (CREW_COLORS.some((c) => c === color)) {
     $(node)
       .children(".avatar")
@@ -250,6 +292,8 @@ function setCrewmate(node) {
       );
     $(`#crewmate-list .avatar[alt='${color}']`).remove();
   }
+
+  $(node).attr("alt", color);
   $(node).children(".avatar").attr("alt", color);
   $(node).children(".avatar").attr("data-dead", dead);
 }
@@ -367,9 +411,11 @@ function setColorPicker(node) {
           alt: newColor,
         });
         setElementColor(oldJoinedUser, newColor);
+        $(node).attr("alt", newColor);
       }
     },
   });
+  if (isLock) $(node).spectrum("disable");
 }
 
 /*---- 死体切り替え ----*/
@@ -378,10 +424,8 @@ function setDeadSwitch(node) {
     const crew = $(node).children(".avatar");
     var color = crew.attr("alt");
 
-    if (CREW_COLORS.some((c) => c === color)) {
-      const sideUser = $(
-        `#joined-ul .side-vs[data-reactid='${$(node).attr("data-reactid")}']`
-      );
+    if (CREW_COLORS.some((c) => c === color) && isLock) {
+      const sideUser = $(`#player-ul .side-vs[alt='${color}']`);
       var dead = sideUser.attr("data-dead") === "" ? "-dead" : "";
       sideUser.attr("data-dead", dead);
       crew.attr("data-dead", dead);
@@ -393,13 +437,19 @@ function setDeadSwitch(node) {
   });
 }
 
-/*---- サイドバーのユーザの色設定 ----*/
+/* サイドバーのユーザの色設定 */
 function setElementColor(element, color) {
   element.attr("alt", color);
   element.css("background-color", color);
 }
+/* プレイヤーの存在判定 */
+function getIsPlayer(node) {
+  const id = $(node).attr("data-reactid");
+  const user = $(`#player-ul .side-vs[data-reactid='${id}']`);
+  return user.length != 0 ? true : false;
+}
 
-/*---- プレビュー ----*/
+/*==== プレビュー ====*/
 const previewCanvas = new fabric.Canvas("preview-canvas");
 $("#save-ss").on("click", function () {
   previewCanvas.setDimensions({
@@ -475,7 +525,3 @@ function setImg(src, height, offset) {
 $("#clear-ss").on("click", function () {
   $(".preview-img-container").empty();
 });
-
-// $("body").on("click", function (e) {
-//   console.log("client=" + e.clientX + "," + e.clientY);
-// });

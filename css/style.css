@@ -129,6 +129,10 @@ body {
   overflow: hidden;
 }
 
+#lock:checked ~ #app-mount .voice-state[alt="rgba(0, 0, 0, 0)"] {
+  display: none;
+}
+
 /*-- button --*/
 .edit {
   float: left;
@@ -217,10 +221,14 @@ nav {
 .participation i {
   margin-left: 2px;
 }
+#player-ul,
 #joined-ul,
 #leaved-ul {
   display: flex;
   flex-wrap: wrap;
+}
+.display-none {
+  display: none;
 }
 .material-icons {
   font-size: 18px;
