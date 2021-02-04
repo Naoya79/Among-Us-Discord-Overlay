@@ -69,6 +69,7 @@ $("body").append(`
         <div class="preview-button">  
           <a class="button" id="save-ss">Screen Shot</a>
           <a class="button" id="clear-ss">Clear</a>
+          <a class="button" id="new-game">New Game</a>
         </div>
         <div class="preview-img-container"></div>
       </div>
@@ -156,6 +157,9 @@ $("#lock-button").on("click", function () {
 
 /*---- 初期位置 ----*/
 $("#reset-button").on("click", function () {
+  resetAvatarPosition();
+});
+function resetAvatarPosition() {
   $(".voice-state").each(function (index, element) {
     $(element).css({
       position: "relative",
@@ -163,7 +167,23 @@ $("#reset-button").on("click", function () {
       top: "",
     });
   });
+}
+
+/*---- 新規ラウンド ----*/
+$("#new-game").on("click", function () {
+  canvas.clear();
+  $(".preview-img-container").empty();
+  resetAvatarPosition();
+  resetAvatarDead();
 });
+function resetAvatarDead() {
+  $("#player-ul .side-vs").attr("data-dead", "");
+  $(".voice-state .avatar").each(function (index, element) {
+    var src = $(element).attr("src").replace("-dead", "");
+    $(element).attr("src", src);
+    $(element).attr("data-dead", "");
+  });
+}
 
 /*---- マップ切り替え ----*/
 $(".map-button").on("click", function () {

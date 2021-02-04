@@ -338,10 +338,18 @@ input[type="checkbox"] {
 }
 .preview-button {
   display: flex;
-  font-size: 16px;
+  font-size: 15px;
 }
 .preview-button .button {
-  padding: 1px 10px;
+  padding: 1px 8px;
+}
+#new-game {
+  margin-left: auto;
+  border-color: #a08080;
+  color: #a08080;
+}
+#new-game:hover {
+  background-color: #a08080 !important;
 }
 .preview-node {
   position: relative;
@@ -376,7 +384,6 @@ input[type="checkbox"] {
   filter: brightness(1.2);
   cursor: pointer;
 }
-
 /* popup */
 .popup_wrap input {
   display: none;
@@ -424,6 +431,7 @@ input[type="checkbox"] {
   max-width: 85vw;
   max-height: 85vh;
 }
+
 /*-- footer --*/
 aside footer {
   margin: auto 10px 10px 10px;
