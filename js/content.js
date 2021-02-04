@@ -174,14 +174,20 @@ $("#new-game").on("click", function () {
   canvas.clear();
   $(".preview-img-container").empty();
   resetAvatarPosition();
-  resetAvatarDead();
+  resetAvatarState();
 });
-function resetAvatarDead() {
+function resetAvatarState() {
   $("#player-ul .side-vs").attr("data-dead", "");
-  $(".voice-state .avatar").each(function (index, element) {
-    var src = $(element).attr("src").replace("-dead", "");
-    $(element).attr("src", src);
-    $(element).attr("data-dead", "");
+  $(".voice-state").each(function (index, element) {
+    const avatar = $(element).children(".avatar");
+    const avatarSrc = avatar.attr("src").replace("-dead", "");
+    avatar.attr("src", avatarSrc);
+    avatar.attr("data-dead", "");
+
+    const emergencyButton = $(element).find(".emergency-button");
+    const ebSrc = emergencyButton.attr("src").replace("open", "close");
+    emergencyButton.attr("src", ebSrc);
+    emergencyButton.css("filter", "brightness(0.5)");
   });
 }
 
