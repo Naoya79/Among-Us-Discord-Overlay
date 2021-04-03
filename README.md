@@ -1,5 +1,5 @@
 <h2 align="center">Among Us Discord Overlay</h2>
-<p align="center">A chrome extension to help players deduce in among us game.</p>
+<p align="center">A chrome extension to helps players deduce in among us game.</p>
 
 <p align="center">
  <img src="https://user-images.githubusercontent.com/67271461/104057200-17bdef80-5235-11eb-81da-1003bea7b7a3.gif"/>
@@ -38,11 +38,11 @@ Access streamkit link from [Discord Streamkit Overlay](https://streamkit.discord
 
 ## Features
 
-- Swap player colors
+- Swap players colors
 - Change player dead/alive
 - Draggable players on the map
 - Record emergency button use
-- Change map
+- Change maps
 - Show player status
 - Free Drawing
 - Save Screen Shots
