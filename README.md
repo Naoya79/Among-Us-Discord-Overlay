@@ -54,6 +54,7 @@ Access streamkit link from [Discord Streamkit Overlay](https://streamkit.discord
 ## Author
 
 - [Github](https://github.com/Naoya79)
+- [Twitter](https://twitter.com/NoyExe)
 
 ## Acknowledgments
 
