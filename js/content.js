@@ -66,7 +66,7 @@ $("body").append(`
       </div>
       <hr class="divider">
       <div class="preview">
-        <div class="preview-button">  
+        <div class="preview-button">
           <a class="button" id="save-ss">Screen Shot</a>
           <a class="button" id="clear-ss">Clear</a>
           <a class="button" id="new-game">New Game</a>
@@ -81,6 +81,7 @@ $("body").append(`
           <a class="button map-button" id="TheSkeld">TheSkeld</a>
           <a class="button map-button" id="MiraHQ">MiraHQ</a>
           <a class="button map-button" id="Polus">Polus</a>
+          <a class="button map-button" id="TheAirShip">TheAirShip</a>
         </div>
         <table id="rule-table">
           <tr>
@@ -517,7 +518,7 @@ async function addPreview() {
 
   var previewSrc = previewCanvas.toDataURL();
   var previewButton = $(`
-    <span class="preview-node">  
+    <span class="preview-node">
       <label for="trigger" class="open-preview">
         <img class="preview-img" src="${previewSrc}" ondragstart="return false;">
         <i class="material-icons remove-preview-node">cancel</i>

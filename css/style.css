@@ -232,7 +232,7 @@ nav {
 }
 .material-icons {
   font-size: 18px;
-  display: inline-flex;
+  /* display: inline-flex; */
   vertical-align: middle;
 }
 .transform {

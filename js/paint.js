@@ -59,9 +59,13 @@ canvas.on("object:added", (e) => {
 
 // 色の変更
 $(".color a").click(function () {
-  canvas.freeDrawingBrush.color = $(this).data("color");
-  $("#bold").css("background-color", $(this).data("color"));
+  const color = $(this).data("color");
+  setBrushColor(color);
 });
+function setBrushColor(color) {
+  canvas.freeDrawingBrush.color = color;
+  $("#bold").css("background-color", color);
+}
 
 // 線の太さ変更
 $("#bold").click(function () {
