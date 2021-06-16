@@ -12,6 +12,12 @@ const CREW_COLORS = [
   "#c51111",
   "#d5e0ef",
   "#f5f558",
+  "#741b14",
+  "#ecc0d3",
+  "#fefbbe",
+  "#708496",
+  "#928776",
+  "#ec7678",
 ];
 
 /*----CSS読み込み----*/
@@ -126,6 +132,12 @@ $("body").append(`
         <img class="avatar" src="${CHROME_EXT_URL}playerIcons/c51111.png" alt="#c51111">
         <img class="avatar" src="${CHROME_EXT_URL}playerIcons/d5e0ef.png" alt="#d5e0ef">
         <img class="avatar" src="${CHROME_EXT_URL}playerIcons/f5f558.png" alt="#f5f558">
+        <img class="avatar" src="${CHROME_EXT_URL}playerIcons/741b14.png" alt="#741b14">
+        <img class="avatar" src="${CHROME_EXT_URL}playerIcons/ecc0d3.png" alt="#ecc0d3">
+        <img class="avatar" src="${CHROME_EXT_URL}playerIcons/fefbbe.png" alt="#fefbbe">
+        <img class="avatar" src="${CHROME_EXT_URL}playerIcons/708496.png" alt="#708496">
+        <img class="avatar" src="${CHROME_EXT_URL}playerIcons/928776.png" alt="#928776">
+        <img class="avatar" src="${CHROME_EXT_URL}playerIcons/ec7678.png" alt="#ec7678">
       </div>
     </footer>
   </aside>
@@ -370,9 +382,9 @@ function setColorPicker(node) {
     showPalette: true,
     showPaletteOnly: true,
     palette: [
-      ["#3f484e", "#132fd2", "#72491e", "#39fedb"],
-      ["#127f2d", "#50ef3a", "#ef7d0e", "#ed53b9"],
-      ["#6b30bc", "#c51111", "#d5e0ef", "#f5f558"],
+      ["#3f484e", "#132fd2", "#72491e", "#39fedb", "#127f2d", "#50ef3a"],
+      ["#ef7d0e", "#ed53b9", "#6b30bc", "#c51111", "#d5e0ef", "#f5f558"],
+      ["#741b14", "#ecc0d3", "#fefbbe", "#708496", "#928776", "#ec7678"],
     ],
     hideAfterPaletteSelect: true,
     clickoutFiresChange: false,
@@ -381,7 +393,7 @@ function setColorPicker(node) {
       $(".sp-container").offset(function (index, coords) {
         return {
           top: coords.top + 13,
-          left: coords.left - 8,
+          left: coords.left - 27,
         };
       });
     },
