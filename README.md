@@ -1,3 +1,5 @@
+<p align="right"><a href="/README_ja.md">日本語</a></p>
+
 <h2 align="center">Among Us Discord Overlay</h2>
 <p align="center">A chrome extension to helps players deduce in among us game.</p>
 
