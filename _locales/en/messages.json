@@ -1,4 +1,7 @@
 {
+  "locale": {
+    "message": "en"
+  },
   "appName": {
     "message": "Among Us Discord Overlay"
   },

@@ -26,9 +26,12 @@ Download & install from **_[Chrome Web Store](https://chrome.google.com/webstore
 
 #### From Extensions popup
 
+0. Verify that the "Developer Mode" of the Discord software is enabled (first time only)
 1. Click the Extensions icon
-2. Enter the target server ID and channel ID
-3. Click the "Open" button and access streamkit link
+2. In the Discord software, copy the ID from the context menu of the server you are joining, and paste it into the ServerID input field of the extension
+3. In the Discord software, copy the ID from the context menu of the voice channel you are joining, and paste it into the ChannelID input field of the extension
+4. Click the "Open" button and access streamkit link
+5. Allow account access in Discord software (first time only) \*This is for StreamKit Overlay functionality, my extension will not get account information
 <p align="center">
  <img src="https://user-images.githubusercontent.com/67271461/105638903-b9da0a80-5eb8-11eb-8eb2-ff2ff749ad10.png"/>
 </p>
@@ -62,3 +65,10 @@ Access streamkit link from [Discord Streamkit Overlay](https://streamkit.discord
 
 - Very useful tool - [Discord Streamkit Overlay](https://streamkit.discord.com/overlay)
 - Inspired - [Kedyn/fusliez-notes](https://github.com/Kedyn/fusliez-notes)
+
+### Attention
+
+- This content is fan-made content
+- Images of crewmates used are from Among Us. Copyright Innersloth, LLC
+- No credit is necessary for video distribution or posting
+- We shall not be liable for any damages caused by you to other users due to or in connection with your use of this content, or for any disputes between you and other users

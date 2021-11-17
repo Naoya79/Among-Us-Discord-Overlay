@@ -1,5 +1,5 @@
 // css
-appendCSS(chrome.extension.getURL("css/paint.css"));
+appendCSS(chrome.runtime.getURL("css/paint.css"));
 
 // html
 let colorElement = "";

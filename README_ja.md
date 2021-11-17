@@ -13,8 +13,8 @@
 
 ## 必要条件
 
-- Chromeデスクトップアプリケーション
-- Discordデスクトップアプリケーション
+- Chrome デスクトップアプリケーション
+- Discord デスクトップアプリケーション
 
 ## ダウンロード
 
@@ -24,18 +24,19 @@
 
 #### 拡張機能のポップアップから使用する場合（推奨）
 
-0. Discordソフトの開発者モードが有効になっていることを確認
-1. Chromeソフトから拡張機能のアイコンをクリックしID入力欄を表示
-2. Discordソフトから、参加しているサーバーの名前を左クリックしIDをコピー、拡張機能のServerID入力欄にペースト
-3. Discordソフトから、参加しているボイスチャンネルの名前を左クリックしIDをコピー、拡張機能のChannelID入力欄にペースト
-4. 「Open」ボタンをクリックし、streamkitのリンクにアクセスする
+0. Discord ソフトの開発者モードが有効になっていることを確認 (初回のみ)
+1. Chrome ソフトから拡張機能のアイコンをクリックし ID 入力欄を表示
+2. Discord ソフトから、参加しているサーバーの名前を右クリックし ID をコピー、拡張機能の ServerID 入力欄にペースト
+3. Discord ソフトから、参加しているボイスチャンネルの名前を右クリックし ID をコピー、拡張機能の ChannelID 入力欄にペースト
+4. 「Open」ボタンをクリックし、streamkit のリンクにアクセスする
+5. Discord ソフトでアカウントアクセスを許可する (初回のみ) ※StreamKit Overlay の機能用で、本拡張機能がアカウント情報を取得することはありません
 <p align="center">
  <img src="https://user-images.githubusercontent.com/67271461/105638903-b9da0a80-5eb8-11eb-8eb2-ff2ff749ad10.png"/>
 </p>
 
-#### Discord Streamkit Overlayのサイトから使用する場合
+#### Discord Streamkit Overlay のサイトから使用する場合
 
-streamkitのサイトからアクセス [Discord Streamkit Overlay](https://streamkit.discord.com/overlay).
+streamkit のサイトからアクセス [Discord Streamkit Overlay](https://streamkit.discord.com/overlay).
 ([利用方法](https://support.discord.com/hc/en-us/articles/223415707))
 
 ## 機能
@@ -46,7 +47,7 @@ streamkitのサイトからアクセス [Discord Streamkit Overlay](https://stre
 - エマージェンシーボタンの管理
 - マップ切り替え
 - プレイヤーの状態をサイドバーに表示
-- お絵かき機能
+- ペイント機能
 - スクリーンショットを撮り、過去の配置を閲覧可能
 
 ## ライセンス
@@ -60,5 +61,12 @@ streamkitのサイトからアクセス [Discord Streamkit Overlay](https://stre
 
 ## 謝辞
 
-- Discord社様：Discord参加者をオーバーレイ表示してくれる便利な機能 - [Discord Streamkit Overlay](https://streamkit.discord.com/overlay)
-- Kedyn様：本アプリのアイデアの源となった便利なAmongUsメモツール - [Kedyn/fusliez-notes](https://github.com/Kedyn/fusliez-notes)
+- Discord 社様：Discord 参加者をオーバーレイ表示してくれる便利な機能 - [Discord Streamkit Overlay](https://streamkit.discord.com/overlay)
+- Kedyn 様：本アプリのアイデアの源となった便利な AmongUs メモツール - [Kedyn/fusliez-notes](https://github.com/Kedyn/fusliez-notes)
+
+### 注意事項
+
+- このコンテンツはファンメイドコンテンツです
+- 使用しているクルーメイトの画像は、Among Us より引用したものです Copyright Innersloth, LLC
+- 動画配信及び動画投稿におけるクレジット表記は不要です
+- 当方は、ご利用者様による本コンテンツの利用に起因または関連してご利用者様が他のご利用者様に及ぼした損害、ならびにご利用者様と他のご利用者様との間の紛争について、責任を負わないものとします

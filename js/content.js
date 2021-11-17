@@ -1,4 +1,5 @@
-const CHROME_EXT_URL = chrome.extension.getURL("images/");
+const CHROME_EXT_URL = chrome.runtime.getURL("images/");
+const USER_LOCALE = chrome.i18n.getMessage("locale");
 const CREW_COLORS = [
   "#3f484e",
   "#132fd2",
@@ -25,7 +26,7 @@ function appendCSS(url) {
   $("body").append(`<link rel="stylesheet" href="${url}">`);
 }
 appendCSS("https://fonts.googleapis.com/icon?family=Material+Icons");
-appendCSS(chrome.extension.getURL("css/style.css"));
+appendCSS(chrome.runtime.getURL("css/style.css"));
 
 /*----ツール要素追加----*/
 $("body").prepend(`
@@ -38,7 +39,8 @@ $("body").prepend(`
 `);
 $("body").append(`
   <div class="map-container">
-    <img id="map" src="${CHROME_EXT_URL}TheSkeld.png" ondragstart="return false;">
+    <img class="map-image" id="map-base" src="${CHROME_EXT_URL}maps/TheSkeld.png" ondragstart="return false;">
+    <img class="map-image" id="map-name-layer" src="${CHROME_EXT_URL}maps/TheSkeld_${USER_LOCALE}.png" ondragstart="return false;">
   </div>
   <div class="popup_wrap">
     <input id="trigger" type="checkbox">
@@ -171,6 +173,7 @@ $("#lock-button").on("click", function () {
 /*---- 初期位置 ----*/
 $("#reset-button").on("click", function () {
   resetAvatarPosition();
+  canvas.clear();
 });
 function resetAvatarPosition() {
   $(".voice-state").each(function (index, element) {
@@ -207,7 +210,8 @@ function resetAvatarState() {
 /*---- マップ切り替え ----*/
 $(".map-button").on("click", function () {
   const buttonId = $(this).attr("id");
-  const src = `${CHROME_EXT_URL}${buttonId}.png`;
+  const baseMapSrc = `${CHROME_EXT_URL}maps/${buttonId}.png`;
+  const nameMapSrc = `${CHROME_EXT_URL}maps/${buttonId}_${USER_LOCALE}.png`;
   $(".map-button").each(function (index, element) {
     $(element).css({
       background: "#36393f",
@@ -218,7 +222,8 @@ $(".map-button").on("click", function () {
     background: "#a0a0a0",
     color: "white",
   });
-  $("#map").attr("src", src);
+  $("#map-base").attr("src", baseMapSrc);
+  $("#map-name-layer").attr("src", nameMapSrc);
 });
 
 /*----Discordユーザ取得----*/
@@ -501,11 +506,17 @@ $("#save-ss").on("click", function () {
 });
 // SSをサイドバーに追加
 async function addPreview() {
-  // map描画
-  var mapSrc = $("#map").attr("src");
-  var mapHeight = $("#map").height();
-  var mapOffset = $("#map").offset();
+  // ベースmap描画
+  var mapSrc = $("#map-base").attr("src");
+  var mapHeight = $("#map-base").height();
+  var mapOffset = $("#map-base").offset();
   await setImg(mapSrc, mapHeight, mapOffset);
+
+  // エリア名レイヤー描画
+  var mapNameSrc = $("#map-name-layer").attr("src");
+  var mapNameHeight = $("#map-name-layer").height();
+  var mapNameOffset = $("#map-name-layer").offset();
+  await setImg(mapNameSrc, mapNameHeight, mapNameOffset);
 
   // paint描画
   var paintSrc = canvas.toDataURL({
