@@ -73,6 +73,8 @@ $("body").append(`
         </div>
       </div>
       <hr class="divider">
+      <textarea id="memorandum"></textarea>
+      <hr class="divider">
       <div class="preview">
         <div class="preview-button">
           <a class="button" id="save-ss">Screen Shot</a>
@@ -191,6 +193,7 @@ $("#new-game").on("click", function () {
   $(".preview-img-container").empty();
   resetAvatarPosition();
   resetAvatarState();
+  clearMemorandum();
 });
 function resetAvatarState() {
   $("#player-ul .side-vs").attr("data-dead", "");
@@ -205,6 +208,9 @@ function resetAvatarState() {
     emergencyButton.attr("src", ebSrc);
     emergencyButton.css("filter", "brightness(0.5)");
   });
+}
+function clearMemorandum() {
+  $("#memorandum").val('');
 }
 
 /*---- マップ切り替え ----*/

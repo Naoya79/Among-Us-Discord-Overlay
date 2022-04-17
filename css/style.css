@@ -332,6 +332,23 @@ input[type="checkbox"] {
   }
 }
 
+/* memo */
+#memorandum {
+  z-index: 1;
+  position: relative;
+  display: block;
+  width: 98%;
+  max-width: 98%;
+  min-width: 98%;
+  height: 24%;
+  background-color: #36393f;
+  color: #bbbbbb;
+  outline: none;
+}
+#memorandum:focus-visible  {
+  border: 1px solid #eeeeee;
+}
+
 /* preview */
 .divider {
   border: 0;
